@@ -1,0 +1,7 @@
+
+User-agent: *
+Allow: /
+
+Disallow: /legal/
+
+Sitemap: https://freespiritdance.ro/sitemap-index.xml
