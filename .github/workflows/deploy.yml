@@ -34,7 +34,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          BASE_PATH: /${{ github.event.repository.name }}/
+          BASE_PATH: /${{ github.event.repository.name }}/original/
 
       - name: Install the redesign choice
         working-directory: freespirit dance redesign choice
@@ -44,13 +44,16 @@ jobs:
         working-directory: freespirit dance redesign choice
         run: npm run build
         env:
-          BASE_PATH: /${{ github.event.repository.name }}/redesign-choice/
+          BASE_PATH: /${{ github.event.repository.name }}/
 
-      - name: Add it under /redesign-choice
-        run: cp -R "../freespirit dance redesign choice/dist" dist/site/redesign-choice
+      - name: Put the redesign at the main address and the original under /original
+        run: |
+          cp -R "../freespirit dance redesign choice/dist" dist/pages
+          cp -R dist/site dist/pages/original
+          touch dist/pages/.nojekyll
 
-      - name: Publish dist/site to the gh-pages branch
-        working-directory: react website/dist/site
+      - name: Publish dist/pages to the gh-pages branch
+        working-directory: react website/dist/pages
         run: |
           git init -q -b gh-pages
           git config user.name "github-actions[bot]"

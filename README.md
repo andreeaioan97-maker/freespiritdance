@@ -7,4 +7,4 @@ Each push to `main` makes GitHub Actions build `react website` and publish it to
 
 ## Redesign choice
 
-`freespirit dance redesign choice` is the chosen redesign, published next to the React site at `/redesign-choice/`. A switcher at the bottom right of both opens the same page in the other version. `npm run dev` runs it at localhost:4418.
+`freespirit dance redesign choice` is the chosen redesign, published at the main address; the React site of the original is at `/original/`. A switcher at the bottom right of both opens the same page in the other version. `npm run dev` runs it at localhost:4418.

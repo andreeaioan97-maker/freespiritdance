@@ -11,4 +11,6 @@ for (const route of paths) {
   mkdirSync(path.join(DIST, route), { recursive: true });
   copyFileSync(path.join(DIST, 'index.html'), path.join(DIST, route, 'index.html'));
 }
+// Also shown for any address that doesn't exist; the app then displays its own not-found page.
+copyFileSync(path.join(DIST, 'index.html'), path.join(DIST, '404.html'));
 console.log(`Copied the page to ${paths.length} routes`);

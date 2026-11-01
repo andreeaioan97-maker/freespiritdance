@@ -10,15 +10,16 @@ import './base.css';
 import './concepts/inner-themes.css';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
-const ORIGINAL = BASE.replace(/\/redesign-choice$/, '');
 
-// The same page in the other published version.
+// The same page in the other published version; a page that doesn't exist goes to its home page.
 function DesignSwitcher() {
   const { pathname, hash } = useLocation();
+  const current = pathname.replace(/\/$/, '') || '/';
+  const page = routes.some((r) => r.path === current) ? current : '/';
   return (
     <nav className="switcher" aria-label="Versiuni ale site-ului">
-      <a href={`${ORIGINAL}${pathname}${hash}`}>Original</a>
-      <a className="active" aria-current="page" href={`${BASE}${pathname}${hash}`}>Redesign</a>
+      <a href={`${BASE}/original${page}${hash}`}>Original</a>
+      <a className="active" aria-current="page" href={`${BASE}${page}${hash}`}>Redesign</a>
     </nav>
   );
 }
