@@ -46,6 +46,7 @@
 /* 11. Valuri 3: on top of Valuri, the home page's type, pills, cards, form fields and moving photos */
 .vw .inner-page main h1:not(.text-\[150px\]) { font-size: clamp(46px, 7vw, 92px); line-height: 1.02; }
 .vw .inner-page main h1.text-3xl { font-size: clamp(36px, 5vw, 60px); line-height: 1.05; }
+@media (max-width: 660px) { .vw .inner-page main h1:not(.text-\[150px\], .text-3xl) { font-size: clamp(32px, 11vw, 46px); overflow-wrap: break-word; } }
 .vw .inner-page main h2 { font-weight: 800; }
 .vw .inner-page main h2:is(.text-2xl, .text-3xl, .text-4xl):not(.text-white) { font-size: clamp(30px, 5vw, 60px); line-height: 1.05; letter-spacing: -.02em; }
 .vw .inner-page :is(.text-gray-500, .text-gray-600, .text-gray-700):not(.bg-brand-dark *) { color: #475569; }
