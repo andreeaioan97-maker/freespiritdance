@@ -1,0 +1,59 @@
+/* Carries each of the designs through every page other than the home page.
+   These rules are unlayered, so they win over the original pages' Tailwind styles. */
+
+.inner-page { position: relative; overflow-x: clip; }
+.inner-page h1, .inner-page h2, .inner-page h3 { font-family: var(--display); }
+
+/* Shared menu and footer links */
+.menu-btn { display: none; flex: none; width: 44px; height: 44px; place-items: center; border: 0; border-radius: 50%; background: var(--gradient); color: #fff; cursor: pointer; }
+.site-menu { position: fixed; z-index: 900; inset: 0; display: flex; flex-direction: column; gap: 4px; padding: 84px 24px 90px; overflow-y: auto; background: var(--dark); color: #fff; }
+.site-menu a { padding: 11px 0; font: 800 26px/1.15 var(--display); text-decoration: none; }
+.site-menu small { margin-top: 18px; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; opacity: .6; }
+.site-menu > button { position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--gradient); color: #fff; cursor: pointer; }
+.site-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; width: min(1160px, 100%); margin: 0 auto 26px; padding: 34px 20px 26px; text-align: left; font-size: 14px; }
+.site-links strong { display: block; margin-bottom: 10px; font: 800 16px var(--display); }
+.site-links a { display: block; padding: 4px 0; text-decoration: none; opacity: .82; transition: opacity .2s, transform .2s; }
+.site-links a:hover { opacity: 1; transform: translateX(4px); }
+.site-links + span { display: block; }
+@media (max-width: 960px) {
+  .menu-btn { display: grid; }
+  header:has(.menu-btn) { gap: 8px; }
+  header:has(.menu-btn) > a:first-child { margin-right: auto; }
+  .site-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* 1. Valuri: soft, fluid, organic corners */
+.va .inner-page { background-color: var(--light); background-image: radial-gradient(at 0 0, #7c4dff1f, transparent 34%), radial-gradient(at 100% 30%, #ff40811a, transparent 34%), radial-gradient(at 0 70%, #7c4dff1a, transparent 34%), radial-gradient(at 100% 100%, #ff40811a, transparent 34%); }
+.va .inner-page h1 { font-weight: 800; letter-spacing: -.03em; }
+.va .inner-page :is(.rounded-\[40px\], .rounded-\[32px\], .rounded-\[48px\], .rounded-3xl) { border-radius: 42px 42px 42px 12px; }
+.va .inner-page :is(.rounded-\[40px\], .rounded-\[48px\]):has(> img) { border-radius: 58% 42% 46% 54% / 46% 56% 44% 54%; transition: border-radius 1s cubic-bezier(.2, .8, .2, 1); }
+.va .inner-page :is(.rounded-\[40px\], .rounded-\[48px\]):has(> img):hover { border-radius: 42px; }
+.va .inner-page :is(.bg-white, .glass-card) { box-shadow: 0 18px 50px #7c4dff1c; border-color: #7c4dff1f; }
+.va .inner-page .bg-gradient-premium { border-radius: 999px; box-shadow: 0 12px 30px #7c4dff40; }
+.va .inner-page .reveal { transform: translateY(44px) rotate(1.5deg); transition-duration: 1.1s; }
+.va .inner-page .reveal.active { transform: none; }
+
+/* 11. Valuri 3: the menu's Despre links, opening on hover or keyboard focus */
+.vw-sub { position: relative; }
+.vw-sub-menu { position: absolute; top: 100%; left: 50%; translate: -50% 0; display: flex; flex-direction: column; gap: 2px; width: max-content; margin-top: 10px; padding: 12px; background: #fff; border: 1px solid #7c4dff1f; border-radius: 28px 28px 28px 8px; box-shadow: 0 18px 50px #7c4dff26; font-size: 14px; letter-spacing: 0; text-transform: none; opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s; }
+.vw-sub-menu::before { content: ""; position: absolute; inset: -14px 0 auto; height: 14px; }
+.vw-sub.open .vw-sub-menu, .vw-sub:has(:focus-visible) .vw-sub-menu { opacity: 1; visibility: visible; }
+@media (hover: hover) { .vw-sub:hover .vw-sub-menu { opacity: 1; visibility: visible; } }
+.vl-nav .vw-sub-menu a { padding: 8px 14px; border-radius: 14px; transition: background .2s, color .2s; }
+.vl-nav .vw-sub-menu a::after { content: none; }
+.vl-nav .vw-sub-menu a:hover { background: #7c4dff14; color: var(--purple); }
+
+/* 11. Valuri 3: on top of Valuri, the home page's type, pills, cards, form fields and moving photos */
+.vw .inner-page main h1:not(.text-\[150px\]) { font-size: clamp(46px, 7vw, 92px); line-height: 1.02; }
+.vw .inner-page main h1.text-3xl { font-size: clamp(36px, 5vw, 60px); line-height: 1.05; }
+.vw .inner-page main h2 { font-weight: 800; }
+.vw .inner-page main h2:is(.text-2xl, .text-3xl, .text-4xl):not(.text-white) { font-size: clamp(30px, 5vw, 60px); line-height: 1.05; letter-spacing: -.02em; }
+.vw .inner-page :is(.text-gray-500, .text-gray-600, .text-gray-700):not(.bg-brand-dark *) { color: #475569; }
+.vw .inner-page :is(a, button)[class*="py-"]:is(.rounded-xl, .rounded-2xl) { border-radius: 999px; }
+.vw .inner-page :is(a, button):is(.bg-brand-dark, .bg-brand-light) { background: var(--gradient); color: #fff; box-shadow: 0 12px 30px #7c4dff40; }
+.vw .inner-page :is(a, button):is(.bg-gradient-premium, .from-brand-purple) { background: var(--gradient); box-shadow: 0 12px 30px #7c4dff40; }
+.vw .inner-page :is(.bg-white, .glass-card):is(.rounded-xl, .rounded-2xl):not(a, button) { border-radius: 28px 28px 28px 8px; }
+.vw .inner-page a.rounded-\[40px\]:has(> img) { border-radius: 42px 42px 42px 12px; }
+.vw .inner-page div.rounded-\[48px\]:has(> img) { animation: va-morph 14s ease-in-out infinite; box-shadow: 0 40px 90px #7c4dff40; }
+.vw .inner-page :is(input:not([type=checkbox], [type=radio]), textarea, select) { border: 1px solid #e2e8f0; border-radius: 18px; background: #f8fafc; }
+.vw .inner-page :is(input:not([type=checkbox], [type=radio]), textarea, select):focus { border-color: var(--purple); background: #fff; box-shadow: 0 0 0 4px #7c4dff1a; }

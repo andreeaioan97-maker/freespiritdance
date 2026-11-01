@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect } from 'react';
 import { Outlet, Route, Routes, useLocation } from 'react-router';
 import Navbar from './generated/Navbar.jsx';
 import Footer from './generated/Footer.jsx';
+import DesignSwitcher from './components/DesignSwitcher.jsx';
 import { mainClass, routes } from './generated/routes.js';
 import { startCookieConsent } from './lib/cookieConsent.js';
 import { revealOnScroll, scheduleFilter } from './lib/pageEffects.js';
@@ -58,6 +59,7 @@ function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <DesignSwitcher />
     </>
   );
 }

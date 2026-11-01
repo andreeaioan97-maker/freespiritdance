@@ -25,7 +25,9 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: react website/package-lock.json
+          cache-dependency-path: |
+            react website/package-lock.json
+            freespirit dance redesign choice/package-lock.json
 
       - run: npm ci
 
@@ -33,6 +35,19 @@ jobs:
         run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
+
+      - name: Install the redesign choice
+        working-directory: freespirit dance redesign choice
+        run: npm ci
+
+      - name: Build the redesign choice
+        working-directory: freespirit dance redesign choice
+        run: npm run build
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/redesign-choice/
+
+      - name: Add it under /redesign-choice
+        run: cp -R "../freespirit dance redesign choice/dist" dist/site/redesign-choice
 
       - name: Publish dist/site to the gh-pages branch
         working-directory: react website/dist/site

@@ -1,0 +1,46 @@
+:root {
+  --purple: #7c4dff;
+  --pink: #ff4081;
+  --dark: #0f172a;
+  --light: #fafbff;
+  --gradient: linear-gradient(135deg, #7c4dff, #ff4081);
+  --display: "Urbanist", system-ui, sans-serif;
+  --sans: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+/* In a layer so the original pages' Tailwind styles still win on their own pages. */
+@layer app-reset {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--light); color: var(--dark); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  h1, h2, h3, p, ul { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  button { font: inherit; cursor: pointer; }
+}
+:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* Shared form layout; each concept styles the look. */
+.form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-wide { grid-column: 1 / -1; }
+.form label > span { display: block; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+.form input:not([type=checkbox]), .form textarea { width: 100%; font: inherit; font-size: 16px; color: inherit; }
+.form-check { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; line-height: 1.5; }
+.form-check em { font-style: normal; }
+.form-check input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--purple); flex: none; }
+.form-note { font-size: 13px; text-align: center; opacity: .7; line-height: 1.5; }
+@media (max-width: 560px) { .form { grid-template-columns: 1fr; } }
+
+/* The switcher between the two published versions. */
+.switcher { position: fixed; z-index: 1000; right: 16px; bottom: 16px; max-width: calc(100vw - 32px); overflow-x: auto; scrollbar-width: none; display: flex; gap: 4px; padding: 5px; border-radius: 999px; background: #0f172ae6; backdrop-filter: blur(8px); box-shadow: 0 8px 24px #0f172a4d; font-size: 13px; font-weight: 700; }
+.switcher a, .switcher button { flex: none; min-width: 32px; height: 32px; padding: 0 10px; display: grid; place-items: center; border: 0; background: none; border-radius: 999px; color: #fff; font: inherit; cursor: pointer; text-decoration: none; }
+.switcher .active { background: var(--gradient); }
+@media (max-width: 480px) {
+  .switcher { right: 8px; bottom: 8px; gap: 0; font-size: 12px; }
+  .switcher a, .switcher button { min-width: 28px; padding: 0 6px; }
+}
+@media (max-width: 480px) { .switcher a, .switcher button { min-width: 24px; padding: 0 5px; } }

@@ -1,0 +1,53 @@
+/* Valuri 2: idea 1 with the logo as backdrop, a word ring, Noapte's menu on a light page, an endless reel. */
+.vl { isolation: isolate; }
+
+/* Menu: Noapte's full-width bar, capitals and sliding underline; its dark fade turned light */
+.vl-nav { position: fixed; z-index: 50; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 28px; background: linear-gradient(#fafbfff5 45%, #fafbff00); color: var(--dark); }
+.vl-nav img { width: 76px; height: auto; filter: drop-shadow(0 6px 14px #7c4dff4d); transition: transform .4s cubic-bezier(.2, .8, .2, 1); }
+.vl-nav > a:first-child:hover img { transform: scale(1.06) rotate(-4deg); }
+.vl-nav nav { display: flex; gap: 32px; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.vl-nav nav a { position: relative; text-decoration: none; }
+.vl-nav nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--pink); transform: scaleX(0); transform-origin: left; transition: transform .35s; }
+.vl-nav nav a:hover::after { transform: scaleX(1); }
+.vl-nav-cta { padding: 10px 20px; border: 1px solid #0f172a4d; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .25s, border-color .25s, color .25s; }
+.vl-nav-cta:hover { background: var(--pink); border-color: var(--pink); color: #fff; }
+
+/* The logo in the background, fixed behind everything; the line stays above it */
+.vl-backdrop { position: fixed; z-index: -1; inset: 0; display: grid; place-items: center; overflow: hidden; pointer-events: none; }
+.vl-backdrop img { height: min(125vh, 150vw); width: auto; max-width: none; mix-blend-mode: multiply; }
+
+/* Word ring around the photo */
+.vl .va-hero-photo { aspect-ratio: 1; display: grid; place-items: center; }
+.vl .va-morph { width: 76%; aspect-ratio: 1; }
+.vl-ring-turn { position: absolute; inset: 0; animation: vl-turn 36s linear infinite; }
+.vl-ring { width: 100%; height: 100%; overflow: visible; }
+.vl-ring text { fill: var(--purple); font: 800 21px var(--display); letter-spacing: .06em; text-transform: uppercase; }
+@keyframes vl-turn { to { transform: rotate(360deg); } }
+
+/* Endless instructors: figures moved by script */
+.af-reel { margin-top: 50px; overflow: hidden; }
+.af-reel figure { margin: 0; width: clamp(240px, 26vw, 360px); }
+.af-reel img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 24px; filter: grayscale(1) contrast(1.05); transition: filter .4s, border-radius .4s; }
+.af-reel figure:nth-child(3n + 1) img { background: var(--purple); }
+.af-reel figure:hover img { filter: none; border-radius: 50% 50% 24px 24px; }
+.af-reel figcaption { padding: 12px 4px; }
+.af-reel strong { display: block; font: 900 22px var(--display); }
+.af-reel span { font-size: 13px; font-weight: 600; color: #475569; }
+.vl-team { padding-block: 90px; scroll-margin-top: 90px; }
+.vl-team .va-head { padding-inline: 20px; margin-bottom: 44px; }
+.vl-reel { margin-top: 0; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.vl-reel:active { cursor: grabbing; }
+.vl-reel-track { display: flex; gap: 14px; width: max-content; }
+.vl-reel figure { flex: none; }
+.vl-reel img { -webkit-user-drag: none; }
+
+@media (max-width: 960px) {
+  .vl-nav { padding: 10px 16px; }
+  .vl-nav nav { display: none; }
+  .vl-nav img { width: 62px; }
+}
+@media (max-width: 860px) {
+  .vl-team { padding-block: 60px; }
+  .vl-backdrop { opacity: .65; }
+  .vl-backdrop img { height: 115vw; }
+}
