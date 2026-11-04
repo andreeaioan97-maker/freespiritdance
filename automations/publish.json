@@ -1,0 +1,7 @@
+{
+  "repository": "andreeaioan97-maker/freespiritdance",
+  "checks": [
+    ["npm", "--prefix", "react website", "run", "build"],
+    ["npm", "--prefix", "freespirit dance redesign choice", "run", "build"]
+  ]
+}
