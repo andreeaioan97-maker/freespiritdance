@@ -46,7 +46,7 @@ export const filters = [
 export const classes = [
   { day: 'Marți', time: '20:00 - 21:20', level: 'intermediate', levelLabel: 'Intermediari', name: 'Grupă Intermediari de Zouk Brazilian' },
   { day: 'Miercuri', time: '19:30 - 20:50', level: 'improvers', levelLabel: 'Improvers', name: 'Grupă Improvers de Zouk Brazilian' },
-  { day: 'Joi', time: '19:30 - 20:50', level: 'beginner', levelLabel: 'Începători', name: 'Grupă Începători de Zouk Brazilian' },
+  { day: 'Joi', time: '20:00 - 21:20', level: 'beginner', levelLabel: 'Începători', name: 'Grupă Începători de Zouk Brazilian' },
 ];
 
 export const pricesIntro = {

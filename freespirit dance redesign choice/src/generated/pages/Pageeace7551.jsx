@@ -1,5 +1,6 @@
 // Generated from static website/site/evenimente/index.html by tools/generate.mjs
 import { Link } from 'react-router';
+import { VenetianMask } from 'lucide-react';
 
 export default function Pageeace7551() {
   return (
@@ -23,16 +24,16 @@ export default function Pageeace7551() {
           {" "}
         </div>
         {" "}
-        <div className="text-center py-16 bg-white rounded-[40px] border border-gray-100 shadow-lg">
-          {" "}
-          <h2 className="font-display font-bold text-2xl text-brand-dark mb-3">
-            {" Nu avem evenimente viitoare publicate momentan "}
+        <div className="text-center py-16 px-6 bg-white rounded-[40px] border border-gray-100 shadow-lg">
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 text-brand-purple">
+            <VenetianMask size={40} strokeWidth={1.5} aria-hidden="true" />
+          </div>
+          <h2 className="font-display font-bold text-3xl lg:text-4xl text-brand-dark mb-3">
+            Stay Tuned
           </h2>
-          {" "}
-          <p className="text-gray-500">
-            {" Revino curând sau urmărește-ne pe social media pentru noutăți. "}
+          <p className="text-lg text-gray-500">
+            B-Zouk Events coming to you in <span className="font-bold text-brand-purple">2027</span>.
           </p>
-          {" "}
         </div>
         {" "}
         <section className="mt-24">

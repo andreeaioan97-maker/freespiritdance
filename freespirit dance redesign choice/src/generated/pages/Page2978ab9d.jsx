@@ -170,7 +170,7 @@ export default function Page2978ab9d() {
                 </div>
                 {" "}
               </Link>
-              <Link to="/contact" className="schedule-item relative z-10 px-2 py-2 block group" style={{ "gridRow": "3 / 6", "gridColumn": "4" }} data-category="beginner">
+              <Link to="/contact" className="schedule-item relative z-10 px-2 py-2 block group" style={{ "gridRow": "4 / 7", "gridColumn": "4" }} data-category="beginner">
                 {" "}
                 <div className="h-full px-4 py-3 rounded-2xl text-sm font-semibold text-left transition-all duration-300 hover-lift bg-purple-100 text-brand-purple border border-purple-200 !border-2 overflow-hidden shadow-sm group-hover:shadow-md">
                   {" "}
@@ -181,7 +181,7 @@ export default function Page2978ab9d() {
                     </div>
                     {" "}
                     <div className=" text-[12px] font-black opacity-30 group-hover:opacity-60 transition-opacity">
-                      {" 19:30 - 20:50 "}
+                      {" 20:00 - 21:20 "}
                     </div>
                     {" "}
                   </div>
@@ -407,7 +407,7 @@ export default function Page2978ab9d() {
                       </span>
                       {" "}
                       <span className="text-[10px] font-bold whitespace-nowrap">
-                        {" 19:30 - 20:50 "}
+                        {" 20:00 - 21:20 "}
                       </span>
                       {" "}
                     </div>

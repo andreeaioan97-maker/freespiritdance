@@ -1,13 +1,12 @@
 import { useRef } from 'react';
 import { AnimatePresence, motion, useScroll, useSpring, useTransform } from 'motion/react';
 import { ArrowRight, Check, MapPin, MessageCircle, Phone } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link, useHref, useLinkClickHandler } from 'react-router';
 import * as c from '../content.js';
 import { asset } from '../lib/asset.js';
 import { BookingForm, MenuButton, SiteLinks, useClassFilter } from '../shared.jsx';
 import './valuri.css';
 
-const MotionLink = motion.create(Link);
 const ease = [0.2, 0.8, 0.2, 1];
 const rise = { hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.9, ease } } };
 export const In = ({ as = 'div', delay = 0, children, ...props }) => {
@@ -87,6 +86,10 @@ function Course({ course, index }) {
 
 function Schedule() {
   const { filter, setFilter, visible } = useClassFilter(c.classes);
+  // A plain motion.a, because AnimatePresence never removes cards made with motion.create(Link).
+  const to = c.live('/contact');
+  const href = useHref(to);
+  const onClick = useLinkClickHandler(to);
   return (
     <section className="va-section" id="orar">
       <In className="va-head"><h2>{c.scheduleIntro.title}</h2><p>{c.scheduleIntro.text}</p></In>
@@ -101,12 +104,12 @@ function Schedule() {
       <div className="va-classes">
         <AnimatePresence mode="popLayout">
           {visible.map((k) => (
-            <MotionLink layout key={k.day} to={c.live('/contact')} className="va-class" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} transition={{ type: 'spring', stiffness: 220, damping: 24 }}>
+            <motion.a layout key={k.day} href={href} onClick={onClick} className="va-class" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} transition={{ type: 'spring', stiffness: 220, damping: 24 }}>
               <small>{k.day}</small>
               <strong>{k.time}</strong>
               <span>{k.name}</span>
               <em>{k.levelLabel}</em>
-            </MotionLink>
+            </motion.a>
           ))}
         </AnimatePresence>
       </div>
