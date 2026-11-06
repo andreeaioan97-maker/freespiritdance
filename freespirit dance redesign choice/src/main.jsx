@@ -1,94 +1,14 @@
-import { useEffect, useLayoutEffect } from 'react';
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router';
-import { MotionConfig, motion } from 'motion/react';
-import ValuriWelcome, { Footer, Header, InnerExtra, rootClass } from './concepts/ValuriWelcome.jsx';
-import { mainClass, routes } from './generated/routes.js';
-import originalCss from './generated/styles/original.css?raw';
-import { revealOnScroll, scheduleFilter } from './lib/pageEffects.js';
-import './base.css';
-import './concepts/inner-themes.css';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router';
+import App from './App.jsx';
 
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-// The same page in the other published version; a page that doesn't exist goes to its home page.
-function DesignSwitcher() {
-  const { pathname, hash } = useLocation();
-  const current = pathname.replace(/\/$/, '') || '/';
-  const page = routes.some((r) => r.path === current) ? current : '/';
-  return (
-    <nav className="switcher" aria-label="Versiuni ale site-ului">
-      <a href={`${BASE}/original${page}${hash}`}>Original</a>
-      <a className="active" aria-current="page" href={`${BASE}${page}${hash}`}>Redesign</a>
-    </nav>
-  );
-}
-
-function ScrollManager() {
-  const { pathname, hash } = useLocation();
-  useEffect(() => {
-    const target = hash && document.getElementById(decodeURIComponent(hash.slice(1)));
-    if (target) target.scrollIntoView({ behavior: 'instant' });
-    else window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [pathname, hash]);
-  return null;
-}
-
-// Any page other than the home page: its original content, with the design's header and footer.
-function InnerPage({ route }) {
-  useLayoutEffect(() => {
-    document.title = route.head.title;
-    const tags = [originalCss, ...route.styles].map((css) => {
-      const el = document.createElement('style');
-      el.textContent = css;
-      document.head.append(el);
-      return el;
-    });
-    return () => tags.forEach((el) => el.remove());
-  }, [route]);
-  useEffect(() => {
-    const stopReveal = revealOnScroll();
-    const stopFilter = scheduleFilter();
-    return () => { stopReveal(); stopFilter(); };
-  }, [route]);
-  return (
-    <div className={rootClass}>
-      <Header />
-      <div className={`inner-page bg-brand-light text-brand-dark font-sans antialiased`}>
-        <InnerExtra />
-        <motion.main className={mainClass} initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}>
-          <route.Component />
-        </motion.main>
-      </div>
-      <Footer />
-    </div>
-  );
-}
-
-function Home() {
-  useEffect(() => { document.title = 'Școala de dans Zouk în București - Free Spirit Dance'; }, []);
-  return <ValuriWelcome />;
-}
-
-function App() {
-  return (
-    <>
-      <ScrollManager />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {routes.filter((r) => r.path !== '/').map((r) => (
-          <Route key={r.path} path={r.path} element={<InnerPage key={r.path} route={r} />} />
-        ))}
-      </Routes>
-      <DesignSwitcher />
-    </>
-  );
-}
-
-createRoot(document.getElementById('root')).render(
-  <BrowserRouter basename={BASE || '/'}>
-    <MotionConfig reducedMotion="user">
-      <App />
-    </MotionConfig>
-  </BrowserRouter>,
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
+const root = document.getElementById('root');
+const app = (
+  <BrowserRouter basename={basename}>
+    <App />
+  </BrowserRouter>
 );
+// Built pages arrive already rendered (tools/prerender.mjs); the dev server sends an empty page.
+if (root.firstElementChild) hydrateRoot(root, app);
+else createRoot(root).render(app);

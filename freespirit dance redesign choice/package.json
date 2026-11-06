@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node tools/route-pages.mjs"
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-server && node tools/prerender.mjs"
   },
   "dependencies": {
     "lucide": "0.577.0",

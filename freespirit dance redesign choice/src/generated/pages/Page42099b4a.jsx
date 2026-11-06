@@ -1301,8 +1301,8 @@ export default function Page42099b4a() {
                         Studioul nostru
                       </p>
                       {" "}
-                      <a href="https://maps.app.goo.gl/91gsV8jJNypgBT2f6" target="_blank" className="text-gray-400 hover:text-white transition-colors leading-relaxed">
-                        {" Intrarea Vitor Eftimiu nr.2 "}
+                      <a href="https://www.google.com/maps/search/?api=1&query=Free%20Spirit%20Dance&query_place_id=ChIJ_0gwEX__sUARKPOo-xSZzTo" target="_blank" className="text-gray-400 hover:text-white transition-colors leading-relaxed">
+                        {" Intrarea Victor Eftimiu 2, 010154 București "}
                       </a>
                       {" "}
                     </div>
@@ -1372,7 +1372,7 @@ export default function Page42099b4a() {
               <div className="rounded-[40px] overflow-hidden shadow-premium border-4 border-white h-72 lg:h-80 bg-gray-100 grayscale hover:grayscale-0 transition-all duration-700">
                 {" "}
                 <div className={"w-full h-full [&_iframe]:w-full [&_iframe]:h-full [&_iframe]:border-0"}>
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.6410456848694!2d26.106524876848695!3d44.42001107107609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff7f113048ff%3A0x3acd9914fba8f328!2sFree%20Spirit%20Dance%20Studio!5e0!3m2!1sro!2sro!4v1719478361187!5m2!1sro!2sro" width="600" height="450" style={{ "border": "0" }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                  <iframe src="https://maps.google.com/maps?q=44.4371069,26.0941636&z=17&hl=ro&output=embed" width="600" height="450" style={{ "border": "0" }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 {" "}
               </div>

@@ -82,8 +82,8 @@ export const booking = {
 
 export const contact = {
   title: 'Unde ne găsești',
-  address: 'Intrarea Vitor Eftimiu nr.2',
-  maps: 'https://maps.app.goo.gl/91gsV8jJNypgBT2f6',
+  address: 'Intrarea Victor Eftimiu 2, 010154 București',
+  maps: 'https://www.google.com/maps/search/?api=1&query=Free%20Spirit%20Dance&query_place_id=ChIJ_0gwEX__sUARKPOo-xSZzTo',
   phone: '+40735425765',
   email: 'freespiritdance9@gmail.com',
   whatsapp: 'https://wa.me/40735425765',
