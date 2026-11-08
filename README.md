@@ -8,3 +8,5 @@ Each push to `main` makes GitHub Actions build `react website` and publish it to
 ## Redesign choice
 
 `freespirit dance redesign choice` is the chosen redesign, published at the main address; the React site of the original is at `/original/`. A switcher at the bottom right of both opens the same page in the other version. `npm run dev` runs it at localhost:4418.
+
+The original site runs in dev at localhost:4419 (started by the choice's dev server). The switcher is `react website/src/components/DesignSwitcher.jsx` and `DesignSwitcher` in the choice's `src/main.jsx`. The contact form opens the visitor's email app; the analytics ids (GA, Meta pixel) in the original are the school's and are kept on purpose.
